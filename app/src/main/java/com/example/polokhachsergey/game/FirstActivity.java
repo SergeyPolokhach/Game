@@ -5,19 +5,16 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class FirstActivity extends AppCompatActivity  implements View.OnClickListener{
 
-    TextView textStart;
     Button buttonNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_first);
 
-        textStart = (TextView) findViewById(R.id.textStart);
         buttonNext = (Button) findViewById(R.id.buttonNext);
 
         buttonNext.setOnClickListener(this);
@@ -28,7 +25,7 @@ public class FirstActivity extends AppCompatActivity  implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonNext:
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, guessNumberActivity.class);
                 startActivity(intent);
                 break;
         }

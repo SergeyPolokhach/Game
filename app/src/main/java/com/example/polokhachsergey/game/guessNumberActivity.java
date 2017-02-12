@@ -50,7 +50,7 @@ public class guessNumberActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_guess_number);
 
         textView = (TextView) findViewById(R.id.textView);
 
@@ -136,7 +136,7 @@ public class guessNumberActivity extends AppCompatActivity {
         super.onResume();
         if (!flag){
             flag = true;
-            Intent intent = new Intent(this, StartActivity.class);
+            Intent intent = new Intent(this, guessNumberStartActivity.class);
             startActivity(intent);
         }
     }

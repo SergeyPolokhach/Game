@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Game</string>
 
-    <string name="text1">Игра угадай число заданое системой в диапазоне от 0 до 9. Для этого у тебя есть три попытки.
-                         Для перехода к игре нажмите клавишу Далее. </string>
+    <string name="gameName">Игра угадай число</string>
+    <string name="text1">Игра угадай число заданое системой в диапазоне от 0 до 9. Для этого у тебя есть три попытки.</string>
     <string name="textNext">Далее</string>
 
     <string name="text2">Для начала игры Start</string>

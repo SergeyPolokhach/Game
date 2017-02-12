@@ -11,7 +11,7 @@ public class guessNumberStartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_guess_number_start);
 
         textStart = (TextView) findViewById(R.id.textStart);
     }
