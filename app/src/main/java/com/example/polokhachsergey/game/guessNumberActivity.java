@@ -1,5 +1,6 @@
 package com.example.polokhachsergey.game;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -15,7 +16,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class guessNumberActivity extends AppCompatActivity {
 
     private TextView textView;
 
@@ -131,6 +132,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (!flag){
+            flag = true;
+            Intent intent = new Intent(this, StartActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -150,12 +161,12 @@ public class MainActivity extends AppCompatActivity {
         switch (id) {
             case R.id.helpNumber:
                 if( unknownNumber % 2 == 0)
-                    Toast.makeText(MainActivity.this, R.string.menuHelp_h,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(guessNumberActivity.this, R.string.menuHelp_h,Toast.LENGTH_SHORT).show();
                 else
-                    Toast.makeText(MainActivity.this, R.string.menuHelp_nh,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(guessNumberActivity.this, R.string.menuHelp_nh,Toast.LENGTH_SHORT).show();
                 break;
             case R.id.helpText:
-                Toast.makeText(MainActivity.this, R.string.menuDescriptionAnswer,Toast.LENGTH_LONG).show();
+                Toast.makeText(guessNumberActivity.this, R.string.menuDescriptionAnswer,Toast.LENGTH_LONG).show();
                 break;
         }
 
@@ -176,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case ANSWER:
-                Toast.makeText(MainActivity.this, String.valueOf(unknownNumber),Toast.LENGTH_SHORT).show();
+                Toast.makeText(guessNumberActivity.this, String.valueOf(unknownNumber),Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onContextItemSelected(item);
