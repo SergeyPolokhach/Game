@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_game"
+    tools:context="com.example.polokhachsergey.game.MainActivity">
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:text="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/DarkRed"
+                android:id="@+id/button1"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+
+            <Button
+                android:text="2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/DarkBlue"
+                android:id="@+id/button2"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+
+            <Button
+                android:text="3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/DarkRed"
+                android:id="@+id/button3"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:text="4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/DarkBlue"
+                android:id="@+id/button4"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+
+            <Button
+                android:text="5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/DarkRed"
+                android:id="@+id/button5"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+
+            <Button
+                android:text="6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/DarkBlue"
+                android:id="@+id/button6"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:text="7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/DarkRed"
+                android:id="@+id/button7"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+
+            <Button
+                android:text="8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/DarkBlue"
+                android:id="@+id/button8"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+
+            <Button
+                android:text="9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/DarkRed"
+                android:id="@+id/button9"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:text="Start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/Gold"
+                android:id="@+id/buttonStart"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button.Toggle" />
+
+            <Button
+                android:text="0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textColor="@color/DarkBlue"
+                android:id="@+id/button0"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button" />
+
+            <Button
+                android:text="I give up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/Chocolate"
+                android:id="@+id/buttonEnd"
+                android:textStyle="bold"
+                style="@android:style/Widget.Button.Toggle" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="@string/text2"
+            android:textColor="@color/Aqua"/>
+
+        <ImageView
+            android:layout_width="195dp"
+            android:layout_height="@dimen/icon_height_h"
+            android:id="@+id/imageView"
+            android:layout_weight="1.08"
+            android:layout_marginBottom="61dp"
+            android:layout_marginLeft="50dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.polokhachsergey.p013_androidcontextmenu.MainActivity">
+
+    <item
+        android:id="@+id/helpText"
+        android:orderInCategory="100"
+        android:title="@string/menuDescription"
+        android:checkable="false"
+        app:showAsAction="never" />
+
+    <group
+        android:id="@+id/group">
+        <item
+            android:id="@+id/helpNumber"
+            android:orderInCategory="100"
+            android:title="@string/menuHelp"
+            app:showAsAction="never" />
+    </group>
+</menu>
