@@ -17,7 +17,7 @@
         </activity>
         <activity
             android:name=".guessNumberActivity"
-            android:label="@string/gameName"
+            android:label="@string/gameName_guessNumber"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".guessNumberStartActivity"

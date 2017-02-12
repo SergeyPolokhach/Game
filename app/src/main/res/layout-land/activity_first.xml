@@ -16,7 +16,7 @@
 
     <Button
         android:id="@+id/buttonNext"
-        android:text="@string/gameName"
+        android:text="@string/gameName_guessNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"

@@ -37,12 +37,14 @@ public class guessNumberActivity extends AppCompatActivity {
     private Button button0;
     private Button buttonEnd;
 
+    private int imageViewDrawableId;
     private int unknownNumber;
     private int counter;
     private int numberOfAttempts = 3;
 
     //
-    private boolean flag = false;
+    private boolean showGuessNumberStartActivity = true;
+    private boolean showMenu = false;
 
     // idContextMenu
     private final int ANSWER = 1;
@@ -69,7 +71,7 @@ public class guessNumberActivity extends AppCompatActivity {
         button0 = (Button) findViewById(R.id.button0);
         buttonEnd = (Button) findViewById(R.id.buttonEnd);
 
-        destroy();
+        showButtonAndMenu(showMenu);
 
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
@@ -132,13 +134,41 @@ public class guessNumberActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        textView.setText(savedInstanceState.getString("textView"));
+
+        unknownNumber = savedInstanceState.getInt("unknownNumber");
+        counter = savedInstanceState.getInt("counter");
+        imageView.setImageResource(savedInstanceState.getInt("imageViewDrawableId"));
+
+        showGuessNumberStartActivity = savedInstanceState.getBoolean("showGuessNumberStartActivity");
+        showMenu = savedInstanceState.getBoolean("showMenu");
+
+        showButtonAndMenu(showMenu);
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
-        if (!flag){
-            flag = true;
+        if (showGuessNumberStartActivity){
+            showGuessNumberStartActivity = false;
             Intent intent = new Intent(this, guessNumberStartActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("textView", (String)textView.getText());
+        outState.putInt("unknownNumber", unknownNumber);
+        outState.putInt("counter", counter);
+        outState.putInt("imageViewDrawableId", imageViewDrawableId);
+        outState.putBoolean("showGuessNumberStartActivity", showGuessNumberStartActivity);
+        outState.putBoolean("showMenu", showMenu);
     }
 
     @Override
@@ -150,7 +180,7 @@ public class guessNumberActivity extends AppCompatActivity {
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         // hides or shows the menu group
-        menu.setGroupVisible(R.id.group, flag );
+        menu.setGroupVisible(R.id.group, showMenu);
         return super.onPrepareOptionsMenu(menu);
     }
 
@@ -197,42 +227,32 @@ public class guessNumberActivity extends AppCompatActivity {
         unknownNumber = new Random(System.currentTimeMillis()).nextInt(10);
 
         counter = 0;
-        flag = true;
 
         anim = AnimationUtils.loadAnimation(this,R.anim.mytrans);
 
-        imageView.setImageResource(R.drawable.poz_3);
+        imageViewDrawableId = R.drawable.poz_3;
+        imageView.setImageResource(imageViewDrawableId);
         imageView.startAnimation(anim);
 
         textView.setText(R.string.textStart);
 
-        button1.setEnabled(true);
-        button2.setEnabled(true);
-        button3.setEnabled(true);
-        button4.setEnabled(true);
-        button5.setEnabled(true);
-        button6.setEnabled(true);
-        button7.setEnabled(true);
-        button8.setEnabled(true);
-        button9.setEnabled(true);
-        button0.setEnabled(true);
-        buttonEnd.setEnabled(true);
+        showButtonAndMenu(true);
     }
 
-    public void destroy() {
-        button1.setEnabled(false);
-        button2.setEnabled(false);
-        button3.setEnabled(false);
-        button4.setEnabled(false);
-        button5.setEnabled(false);
-        button6.setEnabled(false);
-        button7.setEnabled(false);
-        button8.setEnabled(false);
-        button9.setEnabled(false);
-        button0.setEnabled(false);
-        buttonEnd.setEnabled(false);
+    public void showButtonAndMenu(boolean bool) {
+        button1.setEnabled(bool);
+        button2.setEnabled(bool);
+        button3.setEnabled(bool);
+        button4.setEnabled(bool);
+        button5.setEnabled(bool);
+        button6.setEnabled(bool);
+        button7.setEnabled(bool);
+        button8.setEnabled(bool);
+        button9.setEnabled(bool);
+        button0.setEnabled(bool);
+        buttonEnd.setEnabled(bool);
 
-        flag = false;
+        showMenu = bool;
     }
 
     public void giveUp() {
@@ -241,10 +261,11 @@ public class guessNumberActivity extends AppCompatActivity {
 
         anim = AnimationUtils.loadAnimation(this,R.anim.mytrans);
 
-        imageView.setImageResource(R.drawable.poz_5);
+        imageViewDrawableId = R.drawable.poz_5;
+        imageView.setImageResource(imageViewDrawableId);
         imageView.startAnimation(anim);
 
-        destroy();
+        showButtonAndMenu(false);
     }
 
     public void act(int n){
@@ -253,10 +274,11 @@ public class guessNumberActivity extends AppCompatActivity {
 
             anim = AnimationUtils.loadAnimation(this,R.anim.mycombo);
 
-            imageView.setImageResource(R.drawable.poz_2);
+            imageViewDrawableId = R.drawable.poz_2;
+            imageView.setImageResource(imageViewDrawableId);
             imageView.startAnimation(anim);
 
-            destroy();
+            showButtonAndMenu(false);
         } else {
             if ( ++counter != numberOfAttempts){
                 if(numberOfAttempts - counter == 2) {
@@ -264,14 +286,16 @@ public class guessNumberActivity extends AppCompatActivity {
 
                     anim = AnimationUtils.loadAnimation(this,R.anim.myalpha);
 
-                    imageView.setImageResource(R.drawable.neg_3);
+                    imageViewDrawableId = R.drawable.neg_3;
+                    imageView.setImageResource(imageViewDrawableId);
                     imageView.startAnimation(anim);
                 } else {
                     textView.setText(R.string.attempt1);
 
                     anim = AnimationUtils.loadAnimation(this,R.anim.myscale);
 
-                    imageView.setImageResource(R.drawable.neg_1);
+                    imageViewDrawableId = R.drawable.neg_1;
+                    imageView.setImageResource(imageViewDrawableId);
                     imageView.startAnimation(anim);
                 }
             } else {
@@ -280,10 +304,11 @@ public class guessNumberActivity extends AppCompatActivity {
 
                 anim = AnimationUtils.loadAnimation(this,R.anim.myrotate);
 
-                imageView.setImageResource(R.drawable.neg_4);
+                imageViewDrawableId = R.drawable.neg_4;
+                imageView.setImageResource(imageViewDrawableId);
                 imageView.startAnimation(anim);
 
-                destroy();
+                showButtonAndMenu(false);
             }
         }
     }
