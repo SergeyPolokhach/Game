@@ -1,6 +1,7 @@
 package com.example.polokhachsergey.game;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -40,19 +41,28 @@ public class guessNumberActivity extends AppCompatActivity {
     private int imageViewDrawableId;
     private int unknownNumber;
     private int counter;
-    private int numberOfAttempts = 3;
 
-    //
+    // Statistical variables
+    private SharedPreferences sharedPreferences;
+    private int currentStatisticPoz = 0;
+    private int currentStatisticNeg = 0;
+    private int allStatisticPoz;
+    private int allStatisticNeg;
+
+    // Boolean variables display a description of the game and show the menu groups
     private boolean showGuessNumberStartActivity = true;
     private boolean showMenu = false;
 
     // idContextMenu
     private final int ANSWER = 1;
+    private final int STATISTIC = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_number);
+
+        loadStatistic();
 
         textView = (TextView) findViewById(R.id.textView);
 
@@ -141,7 +151,10 @@ public class guessNumberActivity extends AppCompatActivity {
 
         unknownNumber = savedInstanceState.getInt("unknownNumber");
         counter = savedInstanceState.getInt("counter");
-        imageView.setImageResource(savedInstanceState.getInt("imageViewDrawableId"));
+        currentStatisticPoz = savedInstanceState.getInt("statisticPoz");
+        currentStatisticNeg = savedInstanceState.getInt("statisticNeg");
+        imageViewDrawableId = savedInstanceState.getInt("imageViewDrawableId");
+        imageView.setImageResource(imageViewDrawableId);
 
         showGuessNumberStartActivity = savedInstanceState.getBoolean("showGuessNumberStartActivity");
         showMenu = savedInstanceState.getBoolean("showMenu");
@@ -164,9 +177,13 @@ public class guessNumberActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
         outState.putString("textView", (String)textView.getText());
+
         outState.putInt("unknownNumber", unknownNumber);
         outState.putInt("counter", counter);
         outState.putInt("imageViewDrawableId", imageViewDrawableId);
+        outState.putInt("statisticPoz", currentStatisticPoz);
+        outState.putInt("statisticNeg", currentStatisticNeg);
+
         outState.putBoolean("showGuessNumberStartActivity", showGuessNumberStartActivity);
         outState.putBoolean("showMenu", showMenu);
     }
@@ -179,7 +196,7 @@ public class guessNumberActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        // hides or shows the menu group
+        // Hides or shows the menu group
         menu.setGroupVisible(R.id.group, showMenu);
         return super.onPrepareOptionsMenu(menu);
     }
@@ -187,6 +204,7 @@ public class guessNumberActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        String str;
 
         switch (id) {
             case R.id.helpNumber:
@@ -194,6 +212,18 @@ public class guessNumberActivity extends AppCompatActivity {
                     Toast.makeText(guessNumberActivity.this, R.string.menuHelp_h,Toast.LENGTH_SHORT).show();
                 else
                     Toast.makeText(guessNumberActivity.this, R.string.menuHelp_nh,Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.helpStatisticAll:
+                 str = getString(R.string.allStatisticAll) + String.valueOf(allStatisticPoz + allStatisticNeg) + "\n" +
+                        getString(R.string.allStatisticPoz) + String.valueOf(allStatisticPoz) + "\n" +
+                        getString(R.string.allStatisticNeg) + String.valueOf(allStatisticNeg);
+                Toast.makeText(guessNumberActivity.this, str,Toast.LENGTH_LONG).show();
+                break;
+            case R.id.helpStatistic:
+                str = getString(R.string.currentStatisticAll) + String.valueOf(currentStatisticPoz + currentStatisticNeg) + "\n" +
+                        getString(R.string.currentStatisticPoz) + String.valueOf(currentStatisticPoz) + "\n" +
+                        getString(R.string.currentStatisticNeg) + String.valueOf(currentStatisticNeg);
+                Toast.makeText(guessNumberActivity.this, str,Toast.LENGTH_LONG).show();
                 break;
             case R.id.helpText:
                 Toast.makeText(guessNumberActivity.this, R.string.menuDescriptionAnswer,Toast.LENGTH_LONG).show();
@@ -208,16 +238,20 @@ public class guessNumberActivity extends AppCompatActivity {
         switch (v.getId()){
             case R.id.buttonStart:
                 menu.add(0, ANSWER, 0, R.string.contextMenuAnswer);
+                menu.add(0, STATISTIC, 0, R.string.contextMenuStatistic);
                 break;
         }
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case ANSWER:
                 Toast.makeText(guessNumberActivity.this, String.valueOf(unknownNumber),Toast.LENGTH_SHORT).show();
+                break;
+            case STATISTIC:
+                saveStatistic(false);
+                Toast.makeText(guessNumberActivity.this, R.string.contextMenuStatisticToast,Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onContextItemSelected(item);
@@ -228,7 +262,7 @@ public class guessNumberActivity extends AppCompatActivity {
 
         counter = 0;
 
-        anim = AnimationUtils.loadAnimation(this,R.anim.mytrans);
+        anim = AnimationUtils.loadAnimation(this,R.anim.mycombo_alpha_trans);
 
         imageViewDrawableId = R.drawable.poz_3;
         imageView.setImageResource(imageViewDrawableId);
@@ -259,11 +293,14 @@ public class guessNumberActivity extends AppCompatActivity {
         String s = getString(R.string.giveUp) + String.valueOf(unknownNumber);
         textView.setText(s);
 
-        anim = AnimationUtils.loadAnimation(this,R.anim.mytrans);
+        anim = AnimationUtils.loadAnimation(this,R.anim.mycombo_trans_scale);
 
         imageViewDrawableId = R.drawable.poz_5;
         imageView.setImageResource(imageViewDrawableId);
         imageView.startAnimation(anim);
+
+        currentStatisticNeg++;
+        allStatisticNeg++;
 
         showButtonAndMenu(false);
     }
@@ -272,16 +309,19 @@ public class guessNumberActivity extends AppCompatActivity {
         if (unknownNumber == n) {
             textView.setText(R.string.textYes);
 
-            anim = AnimationUtils.loadAnimation(this,R.anim.mycombo);
+            anim = AnimationUtils.loadAnimation(this,R.anim.mycombo_rotate_scale);
 
             imageViewDrawableId = R.drawable.poz_2;
             imageView.setImageResource(imageViewDrawableId);
             imageView.startAnimation(anim);
 
+            currentStatisticPoz++;
+            allStatisticPoz++;
+
             showButtonAndMenu(false);
         } else {
-            if ( ++counter != numberOfAttempts){
-                if(numberOfAttempts - counter == 2) {
+            if ( ++counter != 3){
+                if(counter == 1) {
                     textView.setText(R.string.attempt2);
 
                     anim = AnimationUtils.loadAnimation(this,R.anim.myalpha);
@@ -308,8 +348,42 @@ public class guessNumberActivity extends AppCompatActivity {
                 imageView.setImageResource(imageViewDrawableId);
                 imageView.startAnimation(anim);
 
+                currentStatisticNeg++;
+                allStatisticNeg++;
+
                 showButtonAndMenu(false);
             }
         }
+    }
+
+    private void saveStatistic (boolean flag){
+        if (flag) {
+            sharedPreferences = getPreferences(MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+
+            editor.putInt("allStatisticPoz", allStatisticPoz);
+            editor.putInt("allStatisticNeg", allStatisticNeg);
+
+            editor.commit();
+        } else {
+            allStatisticPoz = 0;
+            allStatisticNeg = 0;
+
+            currentStatisticPoz = 0;
+            currentStatisticNeg = 0;
+        }
+    }
+
+    private void loadStatistic (){
+        sharedPreferences = getPreferences(MODE_PRIVATE);
+        allStatisticPoz = sharedPreferences.getInt("allStatisticPoz", 0);
+        allStatisticNeg = sharedPreferences.getInt("allStatisticNeg", 0);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        saveStatistic(true);
     }
 }

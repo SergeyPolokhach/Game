@@ -6,24 +6,39 @@
 
     <!--guessNumberStartActivity and guessNumberActivity-->
     <string name="text1">Угадай число заданое системой в диапазоне от 0 до 9. Для этого у тебя есть три попытки.</string>
-
     <string name="text2">Для начала игры Start</string>
 
-    <string name="contextMenuAnswer">Ответ</string>
 
+    <!-- Context menu-->
+    <string name="contextMenuAnswer">Ответ</string>
+    <string name="contextMenuStatistic">Обнулить статистику</string>
+    <string name="contextMenuStatisticToast">Статистика обнулена</string>
+
+    <!-- Options menu-->
+    <string name="menuHelp">Подсказка</string>
     <string name="menuHelp_h">Четное число</string>
     <string name="menuHelp_nh">Нечетное число</string>
-    <string name="menuHelp">Подсказка</string>
+
+    <string name="menuStatisticAll">Вся статистика</string>
+    <string name="allStatisticAll">"Всего сыграно:    "</string>
+    <string name="allStatisticPoz">"Из них выиграно:  "</string>
+    <string name="allStatisticNeg">"Из них проиграно: "</string>
+
+    <string name="menuStatistic">Текущая статистика</string>
+    <string name="currentStatisticAll">"Сыграно:   "</string>
+    <string name="currentStatisticPoz">"Выиграно:  "</string>
+    <string name="currentStatisticNeg">"Проиграно: "</string>
+
     <string name="menuDescription">Описание игры</string>
     <string name="menuDescriptionAnswer">Игра угадай число заданое системой в диапазоне от 0 до 9.
                                          Для этого у тебя есть три попытки.</string>
 
+    <!-- The text of the notification to the user -->
     <string name="textStart">Прийми решение слабак.</string>
     <string name="textYes">Угадал !!! :) \nТы просто гений!</string>
     <string name="attempt2">Не угадал !!! :( \nУ тебя осталось две попытки.</string>
     <string name="attempt1">Не угадал !!! :( \nУ тебя осталась одна попытка.</string>
     <string name="attempt0">"Количество попыток закончилось! \nПравильный ответ "</string>
     <string name="giveUp">"Ты сдался! Слабак! \nПравильный ответ "</string>
-
 
 </resources>

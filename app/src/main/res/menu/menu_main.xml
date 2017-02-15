@@ -7,6 +7,22 @@
         android:id="@+id/helpText"
         android:orderInCategory="100"
         android:title="@string/menuDescription"
+
+        android:checkable="false"
+        app:showAsAction="never|ifRoom"
+        android:icon="@android:drawable/ic_dialog_info" />
+
+    <item
+        android:id="@+id/helpStatisticAll"
+        android:orderInCategory="100"
+        android:title="@string/menuStatisticAll"
+        android:checkable="false"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/helpStatistic"
+        android:orderInCategory="100"
+        android:title="@string/menuStatistic"
         android:checkable="false"
         app:showAsAction="never" />
 
