@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,8 +44,10 @@ public class guessNumberActivity extends AppCompatActivity {
     private int unknownNumber;
     private int counter;
 
-    // Statistical variables
     private SharedPreferences sharedPreferences;
+    private RelativeLayout mRelativeLayout;
+
+    // Statistical variables
     private int currentStatisticPoz = 0;
     private int currentStatisticNeg = 0;
     private int allStatisticPoz;
@@ -57,12 +61,16 @@ public class guessNumberActivity extends AppCompatActivity {
     private final int ANSWER = 1;
     private final int STATISTIC = 2;
 
+    // TAG for logcat
+    private final String TAG_LIFECYCLE = "Lifecycle";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guess_number);
+        Log.d(TAG_LIFECYCLE, "ActivityGuessNumber: onCreate()");
 
-        loadStatistic();
+        mRelativeLayout = (RelativeLayout)findViewById(R.id.activity_guess_number);
 
         textView = (TextView) findViewById(R.id.textView);
 
@@ -141,6 +149,34 @@ public class guessNumberActivity extends AppCompatActivity {
         buttonEnd.setOnClickListener(onClickListener);
 
         registerForContextMenu(buttonStart);
+
+        loadStatistic();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d(TAG_LIFECYCLE, "ActivityGuessNumber: onRestart()");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG_LIFECYCLE, "ActivityGuessNumber: onStart()");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG_LIFECYCLE, "ActivityGuessNumber: onResume()");
+
+        loadSettings();
+
+        if (showGuessNumberStartActivity){
+            showGuessNumberStartActivity = false;
+            Intent intent = new Intent(this, guessNumberStartActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -160,16 +196,6 @@ public class guessNumberActivity extends AppCompatActivity {
         showMenu = savedInstanceState.getBoolean("showMenu");
 
         showButtonAndMenu(showMenu);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (showGuessNumberStartActivity){
-            showGuessNumberStartActivity = false;
-            Intent intent = new Intent(this, guessNumberStartActivity.class);
-            startActivity(intent);
-        }
     }
 
     @Override
@@ -227,6 +253,12 @@ public class guessNumberActivity extends AppCompatActivity {
                 break;
             case R.id.helpText:
                 Toast.makeText(guessNumberActivity.this, R.string.menuDescriptionAnswer,Toast.LENGTH_LONG).show();
+                break;
+            case R.id.settings:
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
+                break;
+            default:
                 break;
         }
 
@@ -380,9 +412,31 @@ public class guessNumberActivity extends AppCompatActivity {
         allStatisticNeg = sharedPreferences.getInt("allStatisticNeg", 0);
     }
 
+    private void loadSettings (){
+        sharedPreferences = getSharedPreferences(getString(R.string.settings), MODE_PRIVATE);
+
+        mRelativeLayout.setBackgroundResource(
+                sharedPreferences.getInt(getString(R.string.backgroundGuessNumberActivity), R.drawable.background_screen_1));
+
+        textView.setTextColor(getResources().getColor(sharedPreferences.getInt(getString(R.string.textColorTextView), R.color.White)));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG_LIFECYCLE, "ActivityGuessNumber: onPause()");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG_LIFECYCLE, "ActivityGuessNumber: onStop()");
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(TAG_LIFECYCLE, "ActivityGuessNumber: onDestroy()");
 
         saveStatistic(true);
     }

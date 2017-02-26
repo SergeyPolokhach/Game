@@ -5,10 +5,11 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/company"
-        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstActivity">
+        <activity
+            android:name=".FirstActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +23,21 @@
         <activity
             android:name=".guessNumberStartActivity"
             android:label="@string/menuDescription"
-            android:theme="@style/Theme.AppCompat.Dialog" />
+            android:theme="@style/Theme.AppCompat.Dialog">
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings">
+        </activity>
+        <activity
+            android:name=".ListScreenImage"
+            android:label="@string/settings">
+        </activity>
+        <activity
+            android:name=".ListColor"
+            android:label="@string/settings"
+            android:theme="@style/Theme.AppCompat.Dialog">
+        </activity>
     </application>
 
 </manifest>
