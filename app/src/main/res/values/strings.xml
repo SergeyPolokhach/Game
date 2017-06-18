@@ -1,15 +1,18 @@
 <resources>
-    <string name="app_name">Game</string>
+    <string name="app_name">Угадай число</string>
 
 
-    <string name="gameName_guessNumber">Игра угадай число</string>
+    <string name="gameName_guessNumber">Угадай число</string>
 
-    <!--guessNumberStartActivity and guessNumberActivity-->
-    <string name="text1">Угадай число заданое системой в диапазоне от 0 до 9. Для этого у тебя есть три попытки.</string>
-    <string name="text2">Для начала игры Start</string>
+    <!--Dialog and GuessNumberActivity-->
+    <string name="title">Описание</string>
+    <string name="message">Игра угадай число заданное системой в диапазоне от 0 до 9. Для этого у Вас есть три попытки.</string>
+    <string name="positive">Далее</string>
+    <string name="text2">Для начала игры нажмите - Старт</string>
 
     <!-- Context menu-->
     <string name="contextMenuAnswer">Ответ</string>
+    <string name="contextMenuAnswerToast">Правильный ответ</string>
     <string name="contextMenuStatistic">Обнулить статистику</string>
     <string name="contextMenuStatisticToast">Статистика обнулена</string>
 
@@ -24,38 +27,46 @@
     <string name="allStatisticNeg">"Из них проиграно: "</string>
 
     <string name="menuStatistic">Текущая статистика</string>
-    <string name="currentStatisticAll">"Сыграно:   "</string>
-    <string name="currentStatisticPoz">"Выиграно:  "</string>
-    <string name="currentStatisticNeg">"Проиграно: "</string>
+    <string name="currentStatisticAll">"Сыграно игр:   "</string>
+    <string name="currentStatisticPoz">"Выиграно игр:  "</string>
+    <string name="currentStatisticNeg">"Проиграно игр: "</string>
 
     <string name="menuSettings">Настройки</string>
 
     <string name="menuDescription">Описание игры</string>
-    <string name="menuDescriptionAnswer">Игра угадай число заданое системой в диапазоне от 0 до 9.
-                                         Для этого у тебя есть три попытки.</string>
+    <string name="menuDescriptionAnswer">Игра угадай число заданное системой в диапазоне от 0 до 9.
+                                         Для этого у Вас есть три попытки.</string>
 
     <!-- The text of the notification to the user -->
-    <string name="textStart">Прийми решение слабак.</string>
-    <string name="textYes">Угадал !!! :) \nТы просто гений!</string>
-    <string name="attempt2">Не угадал !!! :( \nУ тебя осталось две попытки.</string>
-    <string name="attempt1">Не угадал !!! :( \nУ тебя осталась одна попытка.</string>
-    <string name="attempt0">"Количество попыток закончилось! \nПравильный ответ "</string>
-    <string name="giveUp">"Ты сдался! Слабак! \nПравильный ответ "</string>
+    <string name="textStart">Приймите решение.</string>
+    <string name="textYes">Угадал !!! :) \nВы просто гений!</string>
+    <string name="attempt2">Не угадал !!! \nУ Вас осталось две попытки.</string>
+    <string name="attempt1">Не угадал !!! \nУ Вас осталась одна попытка.</string>
+    <string name="attempt0">Количество попыток закончилось! \nПравильный ответ</string>
+    <string name="giveUp">Вы сдались! \nПравильный ответ</string>
 
     <!-- Settings -->
-    <string name="settings">Settings</string>
+    <string name="settings">Настройки</string>
 
-    <string name="backgroundFirstActivity">backgroundFirstActivity</string>
-    <string name="backgroundGuessNumberActivity">backgroundGuessNumberActivity</string>
-    <string name="textColorEvenButton">textColorEvenButton</string>
-    <string name="textColorOddButton">textColorOddButton</string>
-    <string name="textColorStartButton">textColorStartButton</string>
-    <string name="textColorGiveUpButton">textColorGiveUpButton</string>
-    <string name="textColorTextView">textColorTextView</string>
+    <string name="idTheme">idTheme</string>
+    <string name="idKeyboard">idKeyboard</string>
+    <string name="idColorTextView">textColorTextView</string>
 
-    <string name="set">"  Применить  "</string>
-    <string name="screen_guess_number">Фон в игре</string>
-    <string name="screen_first">Фон начального экрана</string>
-    <string name="text_color">Цвет текста</string>
+    <string name="set">Применить</string>
+    <string name="groupBackground">Оформление</string>
+    <string name="itemGroupThemeApp">Тема приложения</string>
 
-</resources>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="start">Старт</string>
+    <string name="_0">0</string>
+    <string name="i_give_up">Сдаюсь</string>
+
+ </resources>

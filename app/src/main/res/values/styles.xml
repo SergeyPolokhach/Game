@@ -2,20 +2,86 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/DarkRed</item>
+        <item name="Background">@drawable/theme_default</item>
 
+        <!--Style Button-->
+        <item name="Style">@android:style/Widget.Button</item>
+        <!--Even Button-->
+        <item name="EB_textColor">@color/DarkRed</item>
+        <item name="EB_weight">@string/_2</item>
+        <!--NotEven Button-->
+        <item name="NEB_textColor">@color/DarkBlue</item>
+        <item name="NEB_weight">@string/_1</item>
+        <!--Control Button-->
+        <item name="CB_textColor">@color/colorAccent</item>
+        <item name="CB_weight">@string/_2</item>
+
+        <!--DescriptionDialog-->
+        <item name="Message_text">@string/message</item>
+        <item name="Title">@string/title</item>
+        <item name="Positive_Button">@string/positive</item>
+        <item name="Color_Button">@color/DarkRed</item>
+        <item name="Color_Message">@color/LightGoldenrodYellow</item>
+        <item name="BackgroundDialog">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="AppTheme.Custom1" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/Black</item>
+        <item name="colorPrimaryDark">@color/Black</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/Chocolate</item>
+        <item name="Background">@drawable/theme_custom1</item>
+
+        <!--Style Button-->
+        <item name="Style">@android:style/Widget.Button.Inset</item>
+        <!--Even Button-->
+        <item name="EB_textColor">@color/DarkOrange</item>
+        <item name="EB_weight">@string/_1</item>
+        <!--NotEven Button-->
+        <item name="NEB_textColor">@color/Gold</item>
+        <item name="NEB_weight">@string/_1</item>
+        <!--Control Button-->
+        <item name="CB_textColor">@color/Chocolate</item>
+        <item name="CB_weight">@string/_1</item>
+
+        <!--DescriptionDialog-->
+        <item name="Message_text">@string/message</item>
+        <item name="Title">@string/title</item>
+        <item name="Positive_Button">@string/positive</item>
+        <item name="Color_Button">@color/BlueViolet</item>
+        <item name="Color_Message">@color/DarkRed</item>
+        <item name="BackgroundDialog">@color/Aqua</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:textColor">@color/Navy</item>
+        <item name="Background">@drawable/theme_custom2</item>
+
+        <!--Style Button-->
+        <item name="Style">@android:style/Widget.Holo.Button.Borderless </item>
+        <!--Even Button-->
+        <item name="EB_textColor">@color/Black</item>
+        <item name="EB_weight">@string/_1</item>
+        <!--NotEven Button-->
+        <item name="NEB_textColor">@color/Black</item>
+        <item name="NEB_weight">@string/_1</item>
+        <!--Control Button-->
+        <item name="CB_textColor">@color/Navy</item>
+        <item name="CB_weight">@string/_1</item>
+
+        <!--DescriptionDialog-->
+        <item name="Message_text">@string/message</item>
+        <item name="Title">@string/title</item>
+        <item name="Positive_Button">@string/positive</item>
+        <item name="Color_Button">@color/Navy</item>
+        <item name="Color_Message">@color/Black</item>
+        <item name="BackgroundDialog">@color/LightSlateGray</item>
     </style>
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
 </resources>

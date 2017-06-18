@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.polokhachsergey.game">
+    package="polokhachsergey.game">
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/company"
+        android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".FirstActivity"
+            android:name=".GuessNumberActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,27 +17,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".guessNumberActivity"
-            android:label="@string/gameName_guessNumber"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".guessNumberStartActivity"
-            android:label="@string/menuDescription"
-            android:theme="@style/Theme.AppCompat.Dialog">
-        </activity>
-        <activity
             android:name=".SettingsActivity"
             android:label="@string/settings">
         </activity>
         <activity
-            android:name=".ListScreenImage"
+            android:name=".ListScreenTheme"
             android:label="@string/settings">
         </activity>
-        <activity
-            android:name=".ListColor"
-            android:label="@string/settings"
-            android:theme="@style/Theme.AppCompat.Dialog">
-        </activity>
+        <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
     </application>
 
 </manifest>

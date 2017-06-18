@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="Background" format="reference"/>
+
+    <!--Style Button-->
+    <attr name="Style" format="reference"/>
+    <!--Even Button-->
+    <attr name="EB_textColor" format="reference"/>
+    <attr name="EB_weight" format="string"/>
+    <!--NotEven Button-->
+    <attr name="NEB_textColor" format="reference"/>
+    <attr name="NEB_weight" format="string"/>
+    <!--Control Button-->
+    <attr name="CB_textColor" format="reference"/>
+    <attr name="CB_weight" format="string"/>
+
+    <!--DescriptionDialog-->
+    <attr name="BackgroundDialog" format="color"/>
+    <attr name="Message_text" format="string"/>
+    <attr name="Title" format="string"/>
+    <attr name="Positive_Button" format="string"/>
+    <attr name="Color_Button" format="color"/>
+    <attr name="Color_Message" format="color"/>
+</resources>
